@@ -1,0 +1,90 @@
+!You may want to run $ xrdb -merge ~/.Xresources with each update
+
+!Xft settings:
+
+Xft*dpi:                96
+Xft*hinting:            true
+! hintstyle 3 for flat-panel displays 
+Xft*hintstyle:          2
+Xft*antialias:          true
+! uncomment/adjust for flat-panel display
+Xft*rgba:              rgb
+
+
+! URxvt settings
+
+URxvt*termName:         rxvt-unicode-256color
+URxvt*letterSpace:      0
+! DejaVu é a principal
+! Noto Sans Symbols é para o unicode branch
+! Noto Sans Symbols2 é para unicode linenr 2 e 3, e old vim-powerline
+! Droid Sans Fallback é para unicode maxlinenr 
+URxvt.font:             xft:DejaVu Sans Mono for Powerline:pixelsize=10:antialias=true:hinting=true, \
+!                        xft:Noto Sans Symbols, \
+!                        xft:Noto Sans Symbols2, \
+!                        xft:Droid Sans Fallback, \
+!                        xft:Icons
+URxvt.boldFont:         xft:DejaVu Sans Mono for Powerline:bold:pixelsize=10:antialias=true:hinting=true, \
+                        xft:Noto Sans Symbols2:bold
+URxvt.italicFont:       xft:DejaVu Sans Mono for Powerline:italic:pixelsize=10:antialias=true:hinting=true
+URxvt.boldItalicFont:   xft:DejaVu Sans Mono for Powerline:bold:italic:pixelsize=10:antialias=true:hinting=true
+URxvt*loginShell:        true
+URxvt*scrollBar:         false 
+URxvt.buffered:          true
+URxvt.perl-ext:          default,tabbedex,matcher,font-size
+
+! tabbed, tabbedex
+URxvt.tabbed.tabbar-fg:           2
+URxvt.tabbed.tabbar-bg:           0
+URxvt.tabbed.tab-fg:              3
+URxvt.tabbed.tab-bg:              0
+URxvt.tabbedex.no-tabbedex-keys:  yes
+URxvt.keysym.Control-t:           tabbedex:new_tab
+URxvt.keysym.Control-Tab:         tabbedex:next_tab
+URxvt.keysym.Control-ISO_Left_Tab: tabbedex:prev_tab
+URxvt.keysym.Shift-Up:            tabbedex:rename_tab
+URxvt.keysym.Control-Left:        tabbedex:move_tab_left
+URxvt.keysym.Control-Right:       tabbedex:move_tab_right
+
+! font-size
+URxvt.keysym.C-Up:        font-size:increase
+URxvt.keysym.C-Down:      font-size:decrease
+URxvt.keysym.C-S-Up:      font-size:incglobal
+URxvt.keysym.C-S-Down:    font-size:decglobal
+URxvt.keysym.C-0:         font-size:reset
+URxvt.keysym.C-slash:     font-size:show
+
+URxvt.url-select.underline: True
+!URxvt.perl-ext-common:   keyboard-select
+!URxvt.keysym.M-Escape:   perl:keyboard-select:activate
+URxvt.urlLauncher:       /usr/bin/chromium
+URxvt.matcher.button:    1 
+URxvt*inheritPixmap:    true
+URxvt.transparent:      true 
+! 0 to 99 darknes, 101 to 200 lightnes
+URxvt.shading:           30
+
+URxvt*scrollTtyOuput: false
+
+URxvt*background:        #2f343f
+!URxvt*background:        #000000
+URxvt*foreground:        #4db41e
+URxvt*cursorColor:       #aaaaaa
+URxvt*colorUL:           #366060
+URxvt*underlineColor:    #dfaf8f
+URxvt*color0:            #2b2b2b
+URxvt*color1:            #cc9393
+URxvt*color2:            #7f9f7f
+URxvt*color3:            #d0bf8f
+URxvt*color4:            #6ca0a3
+URxvt*color5:            #dc8cc3
+URxvt*color6:            #93e0e3
+URxvt*color7:            #dcdccc
+URxvt*color8:            #000000
+URxvt*color9:            #dca3a3
+URxvt*color10:           #bfebbf
+URxvt*color11:           #f0dfaf
+URxvt*color12:           #8cd0d3
+URxvt*color13:           #dc8cc3
+URxvt*color14:           #93e0e3
+URxvt*color15:           #ffffff
