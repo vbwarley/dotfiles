@@ -34,6 +34,7 @@ colorscheme minimalist
 hi Search cterm=None ctermfg=grey ctermbg=blue guifg=white guibg=blue
 
 set history=200
+set relativenumber
 
 " --------------- GENERAL CONFIG END   
 "
@@ -67,6 +68,9 @@ function! PackInit() abort
   " ---- auto-complete 
   call minpac#add('Shougo/deoplete.nvim')
   "call minpac#add('zchee/deoplete-clang')
+  
+  " ---- python
+  call minpac#add('SirVer/ultisnips')
 
   " ---- ipython
   "call minpac#add('Vigemus/iron.nvim')
@@ -88,16 +92,31 @@ function! PackInit() abort
   " ---- asciidoc
   call minpac#add('matcatc/vim-asciidoc-folding')
 
+  " ---- js autocomplete
+  call minpac#add('ternjs/tern_for_vim')
+  call minpac#add('carlitux/deoplete-ternjs')
+  
   " ---- react
   call minpac#add('pangloss/vim-javascript')
-  call minpac#add('mxw/vim-jsx', {'do' : {'for': 'json'}})
-  call minpac#add('mattn/emmet-vim', {'do' : {'for' : ['javascript.jsx', 'html', 'css']}})
+  "call minpac#add('mxw/vim-jsx', {'do' : {'for': 'json'}})
+  "call minpac#add('mattn/emmet-vim', {'do' : {'for' : ['javascript.jsx', 'html', 'css']}})
 
+  " ---- vuejs
+  call minpac#add('posva/vim-vue')
+  
   " --- lint
   call minpac#add('w0rp/ale')
 
   " --- helpers
   call minpac#add('Yggdroot/indentLine')
+
+  " --- django
+  call minpac#add('tweekmonster/django-plus.vim')
+
+  " --- deoplete-jedi
+  call minpac#add('deoplete-plugins/deoplete-jedi')
+  
+  
 
   "Plugin 'xuhdev/vim-latex-live-preview'
   "Plugin 'Valloric/YouCompleteMe'
@@ -139,6 +158,10 @@ au VimLeave * silent! !setxkbmap -option
 
 " ---- Others...
 autocmd FileType txt setlocal textwitdh=78
+
+" ---- Python 
+
+
 
 """" PYTHON (search for plugin to auto this)
 au BufNewFile,BufRead *.py

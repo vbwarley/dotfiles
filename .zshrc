@@ -64,6 +64,8 @@ plugins=(
   git
   vi
   react-native yarn
+  pipenv
+  django
 )
 
 # zsh-syntax-highlighting ; eu queria um para mostrar hl no interpreter de python, esse n é pra isso
@@ -130,9 +132,9 @@ export FZF_DEFAULT_COMMAND="rg --files"
 
 # MuJoCo + openaigym
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/lativ/.mujoco/mjpro150/bin
-# 3008
-#export WORKON_HOME=$HOME/.virtualenvs
-#export PROJECT_HOME=$HOME/Documents/UFAL/repos
+
+# 3008 / 180619
+export WORKON_HOME=$HOME/.virtualenvs
 #source /usr/bin/virtualenvwrapper.sh
 # 
 # Android SDK
@@ -145,12 +147,5 @@ export YARN_HOME=~/.yarn
 export PATH=$PATH:$YARN_HOME/bin
 
 
-# 0909 (oh-my-zsh takes care already?!)
-#autoload -Uz up-line-or-beginning-search down-linw-or-beginning-search
-#zle -N up-line-or-beginning-search
-#zle -N down-line-or-beginning-search
-#
-#[[ -n "$key[Up]"  ]] && bindkey -- "$key[Up]"  up-line-or-beginning-search
-#[[ -n "$key[Down]"  ]] && bindkey -- "$key[Down]"  down-line-or-beginning-search
-#
 
+export PATH="/home/lativ/.gem/ruby/2.6.0/bin:/home/lativ/.gem/ruby/2.6.0/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/home/lativ/.local/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/lativ/.config/nvim/pack/minpac/start/fzf/bin:/home/lativ/Android/Sdk/tools:/home/lativ/Android/Sdk/platform-tools:/home/lativ/.yarn/bin:/home/lativ/.local/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/lativ/.config/nvim/pack/minpac/start/fzf/bin:/home/lativ/Android/Sdk/tools:/home/lativ/Android/Sdk/platform-tools:/home/lativ/.yarn/bin:/home/lativ/.vimpkg/bin"
