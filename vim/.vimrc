@@ -1,5 +1,5 @@
-" ---- MAPPINGS
-" Tips: `no` remaps one key combination to another 
+    " ---- MAPPINGS
+" TIPS: `no` remaps one key combination to another 
 
 " https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 cmap w!! w !sudo tee > /dev/null %
@@ -19,6 +19,10 @@ nmap <F8> :tabn<CR>
 nmap <C-N><C-N> :set invnumber<CR> 
 nnoremap <CR> :nohlsearch<CR><CR>
 nnoremap <space> za
+
+" --- buffer traverse commands
+" unimpaired.vim
+
 """" Split navigations
 "nnoremap <C-J> <C-W><C-J>
 "nnoremap <C-K> <C-W><C-K>
@@ -67,8 +71,12 @@ nnoremap <A-8> 8gt
 nnoremap <A-9> 9gt
 nnoremap <A-0> 10gt
 
+"""" deoplete selection binding
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 " ---- ** PLUGINS MAPPINGS BEGIN
-"source $VIMCONFIG/plugins-mappings/fzf.vim
+source $VIMCONFIG/plugins-mappings/fzf.vim
 " ---- ** PLUGINS MAPPINGS END
 
 " --------------------------------- PLUGINS CONFIG BEGIN
@@ -93,6 +101,7 @@ let g:slime_python_ipython = 1
 
 """" deoplete.vim
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay=100 " because semshi
 
 """" neomake
 
@@ -104,6 +113,35 @@ let g:netrw_liststyle=3
 
 """" iron
 let g:iron_repl_open_cmd='split'
+
+" ----------  themes
+"""" gruvbox
+let g:gruvbox_italic=1
+
+"""" asciidoc-folding
+let g:asciidoc_fold_style = 'nested'
+
+"""" 
+
+"""" react
+"let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = { 'javascript.jsx' : { 'extends' : 'jsx', }, }
+
+""""" lint with ale
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0
+
+"""" indentLine
+
+" ---- python
+let g:UltiSnipsExpandTrigger        = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger  = "<c-p>"
+let g:UltiSnipsListSnippets         = "<c-k>"
+
+let g:python_host_prog = '/home/lativ/.virtualenvs/pynvim2-d_dPeMY3/bin/python'
+let g:python3_host_prog = '/home/lativ/.virtualenvs/pynvim-lOSincac/bin/python'
 
 " --------------------------------- PLUGINS CONFIG END
 
