@@ -68,7 +68,7 @@ nnoremap <A-9> 9gt
 nnoremap <A-0> 10gt
 
 " ---- ** PLUGINS MAPPINGS BEGIN
-source $VIMCONFIG/plugins-mappings/fzf.vim
+"source $VIMCONFIG/plugins-mappings/fzf.vim
 " ---- ** PLUGINS MAPPINGS END
 
 " --------------------------------- PLUGINS CONFIG BEGIN
@@ -127,3 +127,5 @@ let g:iron_repl_open_cmd='split'
 "
 "EOF
 
+execute pathogen#infect()
+call pathogen#helptags()

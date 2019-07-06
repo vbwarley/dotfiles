@@ -30,11 +30,12 @@ URxvt*letterSpace:      0
 ! Noto Sans Symbols é para o unicode branch
 ! Noto Sans Symbols2 é para unicode linenr 2 e 3, e old vim-powerline
 ! Droid Sans Fallback é para unicode maxlinenr 
+!URxvt.font:             xft:DejaVu Sans Mono for Powerline:pixelsize=10:antialias=true:hinting=true, \
+!                        xft:Noto Sans Symbols, \
+!                        xft:Noto Sans Symbols2, \
+!                        xft:Droid Sans Fallback, \
+!                        xft:Icons
 URxvt.font:             xft:DejaVu Sans Mono for Powerline:pixelsize=10:antialias=true:hinting=true, \
-                        xft:Noto Sans Symbols, \
-                        xft:Noto Sans Symbols2, \
-                        xft:Droid Sans Fallback, \
-                        xft:Icons
 URxvt.boldFont:         xft:DejaVu Sans Mono for Powerline:bold:pixelsize=10:antialias=true:hinting=true, \
                         xft:Noto Sans Symbols2:bold
 URxvt.italicFont:       xft:DejaVu Sans Mono for Powerline:italic:pixelsize=10:antialias=true:hinting=true

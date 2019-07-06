@@ -189,11 +189,14 @@ bar {
 
 # Multimedia Keys
 # increase volume
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+#bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1000
 # decrease volume
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
+#bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1000
 # mute volume
-bindsym XF86AudioMute exec amixer -q set Master mute
+#bindsym XF86AudioMute exec amixer -q set Master mute
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # pause / play / next / previous
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -201,8 +204,10 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brillo -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec brillo -U 5 # decrease screen brightness
 
 # adicionado em 05/03 20h52
 # bindsym XF86Display exec sh ~/.config/i3/toggle_monitor_state.sh
@@ -279,16 +284,16 @@ workspace_auto_back_and_forth yes   # volta pro workspace anterior antes do atua
 
 # adicionado 1103.0851
 # workspace 1-5 no monitor e 6-10 no laptop 
-workspace 1 output VGA1
-workspace 2 output VGA1
-workspace 3 output VGA1
-workspace 4 output VGA1
-workspace 5 output VGA1
-workspace 6 output LVDS1
-workspace 7 output LVDS1
-workspace 8 output LVDS1
-workspace 9 output LVDS1
-workspace 10 output LVDS1
+#workspace 1 output VGA1
+#workspace 2 output VGA1
+#workspace 3 output VGA1
+#workspace 4 output VGA1
+#workspace 5 output VGA1
+#workspace 6 output LVDS1
+#workspace 7 output LVDS1
+#workspace 8 output LVDS1
+#workspace 9 output LVDS1
+#workspace 10 output LVDS1
 
 # i3-battery-poupup
 exec --no-startup-id i3-battery-popup -n -t 60
