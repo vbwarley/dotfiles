@@ -9,7 +9,8 @@ export ZSH=/home/lativ/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="amuse"
 #ZSH_THEME="theunraveler_ltv"
-ZSH_THEME="xxf"
+#ZSH_THEME="xxf"
+ZSH_THEME="lambda-gitster"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -62,7 +63,6 @@ ZSH_THEME="xxf"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  vi
   react-native yarn
   pipenv
   django

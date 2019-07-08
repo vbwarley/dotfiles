@@ -216,7 +216,7 @@ bindsym XF86MonBrightnessDown exec brillo -U 5 # decrease screen brightness
 # bindsym XF86TouchpadToggle exec $HOME/.toggletouchpad.sh # toggle touchpad
 
 # Custom KeyBinds
-bindsym Print exec scrot -e 'mv $f ~/Imagens/Screenshots/'
+bindsym Print exec scrot -e 'mv $f ~/Images/Screenshots/'
 bindsym Control+$mod+l exec sh ~/.config/i3/i3lock.sh
 #bindsym Control+$mod+s exec shutdown -h now
 bindsym Control+$mod+s exec shutdown -P now
@@ -225,12 +225,12 @@ bindsym Control+$mod+h exec systemctl hibernate
 
 
 # Startup programs
-exec feh --bg-scale ~/Imagens/hermes_sculpture_mercury.jpg
+exec feh --bg-scale --start-at ~/Images/Wallpapers/1_pent.jpg
 exec --no-startup-id dunst -config ~/.config/i3/config_dunst # notify
 exec --no-startup-id conky --daemonize --pause=5
 
 # reload wallpaper
-bindsym $mod+Shift+w exec feh --bg-scale ~/Imagens/hermes_sculpture_mercury.jpg
+#bindsym $mod+Shift+w exec feh --bg-scale ~/Imagens/hermes_sculpture_mercury.jpg
 
 # class                     border  backg.  text    indicator   child_border
 # 

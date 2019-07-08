@@ -1,4 +1,4 @@
-    " ---- MAPPINGS
+" ---- MAPPINGS
 " TIPS: `no` remaps one key combination to another 
 
 " https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
@@ -76,7 +76,7 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " ---- ** PLUGINS MAPPINGS BEGIN
-source $VIMCONFIG/plugins-mappings/fzf.vim
+"source $VIMCONFIG/plugins-mappings/fzf.vim
 " ---- ** PLUGINS MAPPINGS END
 
 " --------------------------------- PLUGINS CONFIG BEGIN
@@ -140,8 +140,7 @@ let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger  = "<c-p>"
 let g:UltiSnipsListSnippets         = "<c-k>"
 
-let g:python_host_prog = '/home/lativ/.virtualenvs/pynvim2-d_dPeMY3/bin/python'
-let g:python3_host_prog = '/home/lativ/.virtualenvs/pynvim-lOSincac/bin/python'
+let g:python3_host_prog = '/home/lativ/.virtualenvs/vim-S0fyIJWd/bin/python'
 
 " --------------------------------- PLUGINS CONFIG END
 

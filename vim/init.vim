@@ -1,5 +1,6 @@
 " --------------- GENERAL CONFIG BEGIN 
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
+
 set clipboard+=unnamedplus
 let &packpath = &runtimepath
 
@@ -29,8 +30,8 @@ set number
 set backup
 
 set termguicolors
-"colorscheme gruvbox
-colorscheme minimalist
+colorscheme gruvbox
+"colorscheme minimalist
 hi Search cterm=None ctermfg=grey ctermbg=blue guifg=white guibg=blue
 
 set history=200
@@ -115,7 +116,12 @@ function! PackInit() abort
 
   " --- deoplete-jedi
   call minpac#add('deoplete-plugins/deoplete-jedi')
-  
+
+  " --- vim-ledger
+  call minpac#add('ledger/vim-ledger')
+
+  " --- sudo in nvim
+  call minpac#add('lambdalisue/suda.vim')
   
 
   "Plugin 'xuhdev/vim-latex-live-preview'
