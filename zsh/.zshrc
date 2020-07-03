@@ -4,12 +4,39 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/lativ/.oh-my-zsh
 
+export DOTFILES=~/dev/dotfiles
+
+# setting editor and its data and its conf
+export VISUAL="nvim"
+export EDITOR='nvim'
+export VIMCONFIG=~/.config/nvim
+export VIMDATA=~/.local/share/nvim
+#export PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/bin
+
+# Filtering out files for FZF
+export FZF_DEFAULT_COMMAND="rg --files --hidden"
+
+# MuJoCo + openaigym
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda/lib/
+
+# 3008 / 180619
+export WORKON_HOME=$HOME/.virtualenvs
+#source /usr/bin/virtualenvwrapper.sh
+
+# Android SDK
+# export ANDROID_HOME=~/Android/Sdk
+# export PATH=$PATH:$ANDROID_HOME/tools
+# export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# local
+export PATH=$PATH:~/.local/bin
+
+# tex
+
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="amuse"
-#ZSH_THEME="theunraveler_ltv"
-#ZSH_THEME="xxf"
 ZSH_THEME="lambda-gitster"
 
 # Set list of themes to load
@@ -63,14 +90,9 @@ ZSH_THEME="lambda-gitster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  react-native yarn
-  pipenv
-  django
+  virtualenvwrapper
 )
 
-# zsh-syntax-highlighting ; eu queria um para mostrar hl no interpreter de python, esse n é pra isso
-# só usar o ipython, cara!
-#
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -101,53 +123,46 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-#
-# added 23/02/18 at 15h30
+
 # Ruby path
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
-# add 14/03/2018 at 21h16
-# check if this can make airline themes to work
-#if [ -e /usr/share/terminfo/r/rxvt-256color ]; then
-#    export TERM='rxvt-256color'
-#else
-#    export TERM='rxvt-color'
-#fi
-
 # zsh will auto cd to a dir if it is given as cmd
 setopt AUTO_CD
 
-# setting editor and its data and its conf
-export VISUAL="nvim"
-export EDITOR='nvim'
-export VIMCONFIG=~/.config/nvim
-export VIMDATA=~/.local/share/nvim
-export PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/bin
+# kitty
+autoload -Uz compinit
+compinit
+kitty + complete setup zsh | source /dev/stdin
 
-# Filtering out files for FZF
-export FZF_DEFAULT_COMMAND="rg --files"
+# matplotlib-backend-kitty
+export PYTHONPATH=$PYTHONPATH:/home/lativ/dev/ipython
 
-# MuJoCo + openaigym
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/lativ/.mujoco/mjpro150/bin
+# vision_utils
+export PYTHONPATH=$PYTHONPATH:/home/lativ/dev/vision
 
-# 3008 / 180619
-export WORKON_HOME=$HOME/.virtualenvs
-#source /usr/bin/virtualenvwrapper.sh
-# 
-# Android SDK
-export ANDROID_HOME=~/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+# vi 
+bindkey -v
 
-# react-native
-export YARN_HOME=~/.yarn
-export PATH=$PATH:$YARN_HOME/bin
+# https://unix.stackexchange.com/a/461262
+bindkey "^P" history-beginning-search-backward
+bindkey "^N" history-beginning-search-forward
 
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
-export PATH="/home/lativ/.gem/ruby/2.6.0/bin:/home/lativ/.gem/ruby/2.6.0/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/home/lativ/.local/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/lativ/.config/nvim/pack/minpac/start/fzf/bin:/home/lativ/Android/Sdk/tools:/home/lativ/Android/Sdk/platform-tools:/home/lativ/.yarn/bin:/home/lativ/.local/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/lativ/.config/nvim/pack/minpac/start/fzf/bin:/home/lativ/Android/Sdk/tools:/home/lativ/Android/Sdk/platform-tools:/home/lativ/.yarn/bin:/home/lativ/.vimpkg/bin"
-
-export PATH="/home/lativ/.gem/ruby/2.6.0/bin:/home/lativ/.gem/ruby/2.6.0/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/home/lativ/.local/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/lativ/.config/nvim/pack/minpac/start/fzf/bin:/home/lativ/Android/Sdk/tools:/home/lativ/Android/Sdk/platform-tools:/home/lativ/.yarn/bin:/home/lativ/.local/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/lativ/.config/nvim/pack/minpac/start/fzf/bin:/home/lativ/Android/Sdk/tools:/home/lativ/Android/Sdk/platform-tools:/home/lativ/.yarn/bin:/home/lativ/.vimpkg/bin:/home/lativ/.vimpkg/bin"

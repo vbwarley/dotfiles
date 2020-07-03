@@ -32,8 +32,8 @@ alias 'courses=cd ~/Dados/Estudos/courses'
 alias 'things=cd ~/Dados/Estudos/things'
 alias 'estudos=cd ~/Dados/Estudos'
 alias 'estudar=cd ~/Dados/Estudos && cd'
-alias 'vi=nvim'
-alias 'vim=nvim'
+alias 'ml=cd Study/ML; workon dl; jupyter lab'
+
 
 # commands
 alias cp="acp -g" 
@@ -41,3 +41,5 @@ alias mv="amv -g"
 alias :q="exit"
 alias ls='ls --color=tty -B'
 alias k9='kill -9'
+alias 'vi=nvim'
+alias 'vim=nvim'
