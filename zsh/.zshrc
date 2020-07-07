@@ -3,36 +3,25 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/lativ/.oh-my-zsh
-
 export DOTFILES=~/dev/dotfiles
+export VIMCONFIG=~/.config/nvim
+export VIMDATA=~/.local/share/nvim
 
 # setting editor and its data and its conf
 export VISUAL="nvim"
 export EDITOR='nvim'
-export VIMCONFIG=~/.config/nvim
-export VIMDATA=~/.local/share/nvim
-#export PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/bin
-
-# Filtering out files for FZF
+# export PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/bin
 export FZF_DEFAULT_COMMAND="rg --files --hidden"
-
-# MuJoCo + openaigym
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda/lib/
-
-# 3008 / 180619
+export CUDA_DIR=/opt/cuda
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_DIR/lib/
 export WORKON_HOME=$HOME/.virtualenvs
-#source /usr/bin/virtualenvwrapper.sh
+export PATH=$PATH:~/.local/bin
+# source /usr/bin/virtualenvwrapper.sh
 
 # Android SDK
 # export ANDROID_HOME=~/Android/Sdk
 # export PATH=$PATH:$ANDROID_HOME/tools
 # export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-# local
-export PATH=$PATH:~/.local/bin
-
-# tex
-
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -165,4 +154,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
