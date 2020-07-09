@@ -110,11 +110,11 @@ let g:matchup_surround_enabled = 1
 "}}}
 
 "{{{ALE
-let g:ale_sign_error = '●'
-let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 0
+let g:ale_python_pylint_options = '--rcfile ~/.pylintrc'
+let g:ale_linters = {'python': ['pylint']}
 let g:ale_fixers = {
-            \ 'python' : ['yapf'],}
+            \ 'python' : ['black'],}
 nmap <F9> <Plug>(ale_fix)
 " set redrawtime=10000 " or could CTRL-L few times"
 " let g:ale_fix_on_save = 1
@@ -200,6 +200,14 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 "}}}
 
+"{{{jupytext.vim
+" let g:jupytext_filetype_map = {'md': 'pandoc'}
+let g:jupytext_fmt = 'py'
+let g:jupytext_print_debug_msgs = 1
+"}}}
+
+" Set autocommands
+
 "{{{AUGROUP
 augroup configgroup
     autocmd! 
@@ -237,14 +245,13 @@ augroup configgroup
 augroup END
 "}}}
 
+" Packages
 
 " minpac {{{
 function! PackInit() abort
   packadd minpac
   call minpac#init()
-  " To uninstall, you remove the line installing the plugin
-  " save, reload this file
-  " and invoke the command :call minpac#clean() 
+  " ---
   call minpac#add('k-takata/minpac', {'type': 'opt'})
   call minpac#add('tpope/vim-unimpaired')
   " call minpac#add('tpope/vim-projectionist')
@@ -252,7 +259,7 @@ function! PackInit() abort
   " call minpac#add('neomake/neomake')
   call minpac#add('vim-airline/vim-airline')
   call minpac#add('vim-airline/vim-airline-themes')
-  " ---
+  " --- fzf
   call minpac#add('junegunn/fzf')
   call minpac#add('junegunn/fzf.vim')
   " ---- closing
@@ -260,47 +267,41 @@ function! PackInit() abort
   call minpac#add('alvan/vim-closetag')
   " ---- auto-complete 
   call minpac#add('Shougo/deoplete.nvim', {'type': 'opt'})
-  " call minpac#add('zchee/deoplete-clang')
+  " --- deoplete-plugins
+  call minpac#add('deoplete-plugins/deoplete-jedi')
   call minpac#add('Shougo/deoplete-clangx')
   " ---- ipython
   call minpac#add('Vigemus/iron.nvim', {'type': 'start'})
-  "call minpac#add('thinca/vim-quickrun')
+  " call minpac#add('thinca/vim-quickrun')
   call minpac#add('powerman/vim-plugin-autosess')
   " --- revisions "
-  "call minpac#add('vim-scripts/savevers.vim')
-  "
+  " call minpac#add('vim-scripts/savevers.vim')
   """" color scheme for vim """"
   call minpac#add('morhetz/gruvbox')
   call minpac#add('dikiaap/minimalist')
   """" semantic highlighting for python in neovim """"
   call minpac#add('numirias/semshi')
   " ---- asciidoc
-  "call minpac#add('matcatc/vim-asciidoc-folding')
+  " call minpac#add('matcatc/vim-asciidoc-folding')
   " ---- js autocomplete
-  "call minpac#add('ternjs/tern_for_vim')
-  "call minpac#add('carlitux/deoplete-ternjs')
-  "
+  " call minpac#add('ternjs/tern_for_vim')
+  " call minpac#add('carlitux/deoplete-ternjs')
   call minpac#add('w0rp/ale')
   " --- helpers
   call minpac#add('Yggdroot/indentLine')
   " --- django
-  "call minpac#add('tweekmonster/django-plus.vim')
-  " --- deoplete-plugins
-  call minpac#add('deoplete-plugins/deoplete-jedi')
-  " call minpac#add('deoplete-plugins/deoplete-clang')
+  " call minpac#add('tweekmonster/django-plus.vim')
   " --- vim-ledger
   call minpac#add('ledger/vim-ledger')
   " --- sudo in nvim
   call minpac#add('lambdalisue/suda.vim')
-  " --- qml
-  "call minpac#add('peterhoeg/vim-qml')
   " --- writing
   call minpac#add('junegunn/goyo.vim')
   call minpac#add('lifepillar/vim-solarized8')
   " --- i3config
   call minpac#add('mboughaba/i3config.vim')
   " --- dart-lang
-  "call minpac#add('dart-lang/dart-vim-plugin')
+  " call minpac#add('dart-lang/dart-vim-plugin')
   " --- latex ac
   call minpac#add('lervag/vimtex', {'type': 'opt'})
   " --- snippets
@@ -313,25 +314,31 @@ function! PackInit() abort
   " -- auto correct
   call minpac#add('sedm0784/vim-you-autocorrect')
   " --- vim wiki
-  call minpac#add('vimwiki/vimwiki')
-  call minpac#add('itchyny/calendar.vim')
+  " call minpac#add('vimwiki/vimwiki')
+  " call minpac#add('itchyny/calendar.vim')
   call minpac#add('vim-pandoc/vim-pandoc')
   call minpac#add('vim-pandoc/vim-pandoc-syntax')
   call minpac#add('Glench/Vim-Jinja2-Syntax')
+  " ---
   call minpac#add('davidhalter/jedi-vim')
   call minpac#add('Vimjas/vim-python-pep8-indent')
-  " ---
+  " --- html, js
   call minpac#add('mattn/emmet-vim')
+  " ---
   call minpac#add('andymass/vim-matchup')
   call minpac#add('tpope/vim-surround')
   " ---
-  call minpac#add('jalvesaq/Nvim-R')
+  " call minpac#add('jalvesaq/Nvim-R')
+  " ---
+  call minpac#add('goerz/jupytext.vim')
 endfunction
 
 command! PackUpdate call PackInit() | call minpac#update('', {'do': 'call minpac#status()'})
 command! PackClean  call PackInit() | call minpac#clean()
 command! PackStatus call PackInit() | call minpac#status()
 "}}}
+
+" Mappings
 
 "{{{MAPPINGS
 " TIPS: `no` remaps one key combination to another 
