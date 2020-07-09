@@ -8,16 +8,16 @@ set $mon0 eDP-1-1
 set $mon1 HDMI-1-1
 
 # Name the workspaces
-set $tag1 @
-set $tag2 👁
-set $tag3 🕮
-set $tag4 λ
-set $tag5 💻
-set $tag6 💻
-set $tag7 🗓
-set $tag8 🗎
-set $tag9 🖉
-set $tag10 ♪
+set $tag1 1 @
+set $tag2 2 👁
+set $tag3 3 🕮
+set $tag4 4 λ
+set $tag5 5 💻
+set $tag6 6 💻
+set $tag7 7 🗓
+set $tag8 8 🗎
+set $tag9 9 🖉
+set $tag10 10 ♪
 
 #}}}
 
@@ -81,40 +81,40 @@ bindsym $mod+c focus child
 #}}}
 
 #{{{Workspaces: switching, moving, labeling
-bindsym $mod+1 workspace 1 $tag1
-bindsym $mod+2 workspace 2 $tag2
-bindsym $mod+3 workspace 3 $tag3
-bindsym $mod+4 workspace 4 $tag4
-bindsym $mod+5 workspace 5 $tag5
-bindsym $mod+6 workspace 6 $tag6
-bindsym $mod+7 workspace 7 $tag7
-bindsym $mod+8 workspace 8 $tag8
-bindsym $mod+9 workspace 9 $tag9
-bindsym $mod+0 workspace 10 $tag10
+bindsym $mod+1 workspace $tag1
+bindsym $mod+2 workspace $tag2
+bindsym $mod+3 workspace $tag3
+bindsym $mod+4 workspace $tag4
+bindsym $mod+5 workspace $tag5
+bindsym $mod+6 workspace $tag6
+bindsym $mod+7 workspace $tag7
+bindsym $mod+8 workspace $tag8
+bindsym $mod+9 workspace $tag9
+bindsym $mod+0 workspace $tag10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1 $tag1
-bindsym $mod+Shift+2 move container to workspace 2 $tag2
-bindsym $mod+Shift+3 move container to workspace 3 $tag3
-bindsym $mod+Shift+4 move container to workspace 4 $tag4
-bindsym $mod+Shift+5 move container to workspace 5 $tag5
-bindsym $mod+Shift+6 move container to workspace 6 $tag6
-bindsym $mod+Shift+7 move container to workspace 7 $tag7
-bindsym $mod+Shift+8 move container to workspace 8 $tag8
-bindsym $mod+Shift+9 move container to workspace 9 $tag9
-bindsym $mod+Shift+0 move container to workspace 10 $tag10
+bindsym $mod+Shift+1 move container to workspace $tag1
+bindsym $mod+Shift+2 move container to workspace $tag2
+bindsym $mod+Shift+3 move container to workspace $tag3
+bindsym $mod+Shift+4 move container to workspace $tag4
+bindsym $mod+Shift+5 move container to workspace $tag5
+bindsym $mod+Shift+6 move container to workspace $tag6
+bindsym $mod+Shift+7 move container to workspace $tag7
+bindsym $mod+Shift+8 move container to workspace $tag8
+bindsym $mod+Shift+9 move container to workspace $tag9
+bindsym $mod+Shift+0 move container to workspace $tag10
 
 # workspace 1-5 no monitor e 6-10 no laptop 
-workspace "1 $tag1" output $mon1
-workspace "2 $tag2" output $mon1
-workspace "3 $tag3" output $mon1
-workspace "4 $tag4" output $mon1
-workspace "5 $tag5" output $mon1
-workspace "6 $tag6" output $mon0
-workspace "7 $tag7" output $mon0
-workspace "8 $tag8" output $mon0
-workspace "9 $tag9" output $mon0
-workspace "10 $tag10" output $mon0
+workspace "$tag1" output $mon1
+workspace "$tag2" output $mon1
+workspace "$tag3" output $mon1
+workspace "$tag4" output $mon1
+workspace "$tag5" output $mon1
+workspace "$tag6" output $mon0
+workspace "$tag7" output $mon0
+workspace "$tag8" output $mon0
+workspace "$tag9" output $mon0
+workspace "$tag10" output $mon0
 
 #}}}
 
