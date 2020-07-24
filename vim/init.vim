@@ -75,7 +75,8 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()"
 "}}}
 
 "{{{ Deoplete 
-let g:python3_host_prog = '/home/lativ/.virtualenvs/vim-S0fyIJWd/bin/python'
+let g:python_host_prog = '/home/lativ/.virtualenvs/neovim-py2/bin/python'
+let g:python3_host_prog = '/home/lativ/.virtualenvs/neovim/bin/python'
 let g:deoplete#enable_at_startup = 1
 "let g:deoplete#auto_complete_delay=100 " because semshi
 packadd deoplete.nvim
@@ -173,6 +174,7 @@ let g:UltiSnipsExpandTrigger        = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger  = "<c-p>"
 let g:UltiSnipsListSnippets         = "<c-k>"
+let g:UltiSnipsSnippetDirectories   = ['UltiSnips', $HOME.'/dev/vim-snippets']
 "}}} 
 
 "{{{auto save
@@ -221,8 +223,8 @@ augroup configgroup
     au FileType txt setlocal textwitdh=78
     au TermOpen * set invnumber
     au TermClose * set number
-    au VimEnter * silent! !setxkbmap -option caps:ctrl_modifier
-    au VimLeave * silent! !setxkbmap -option 
+    " au VimEnter * silent! !setxkbmap -option caps:ctrl_modifier
+    " au VimLeave * silent! !setxkbmap -option 
     "au BufEnter * EnableAutocorrect
     au BufEnter * if &buftype == 'terminal' | :startinsert | endif
     au BufNewFile,BufRead ~/.config/i3/config set filetype=i3config
