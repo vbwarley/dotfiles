@@ -191,7 +191,8 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 #{{{Assign app to workspace
 for_window [title="Battery Warning"] sticky enable
-for_window [class="Spotify"] move to workspace 10 $tag10
+for_window [window_type="notification"] floating enable
+for_window [class="Spotify"] move to workspace $tag10
 assign [class="^TelegramDesktop$" instance="^telegram-desktop$"] → $tag1
 #}}}
 
