@@ -32,11 +32,11 @@ title_align center
 
 #{{{Colors
 # class                     border  backg.  text    indicator   child_border
-client.focused              #2F343F #2F343F #4db41e #ffffff     #aaaaaa
+client.focused              #999999 #2F343F #4db41e #ffffff     #aaaaaa
 client.focused_inactive     #2f343f #2f343f #ffffff #2f343f     #6a6a6a
 client.unfocused            #FFFFFF #AAAAAA #000000 #333333     #2f343f
 client.urgent               #2f343a #900000 #ffffff #900000     #ff0000
-client.background           #ffffff
+client.background           #ffffff 
 #}}}
 
 # Binds
@@ -133,14 +133,14 @@ bindsym Control+$mod+s exec systemctl suspend
 
 #{{{terminal, rofi
 bindsym $mod+Return exec kitty
-bindsym --release $mod+d exec --no-startup-id "rofi -combi-modi window,drun -show combi -modi combi,drun -theme arc-red-dark -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+bindsym --release $mod+d exec --no-startup-id "rofi -combi-modi window,drun -show combi -modi combi,drun -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
 
 # rofi-menus
 bindsym $mod+Shift+p exec powermenu
 bindsym F7 exec xrandrmenu
 bindsym Control+F7 exec i3layoutmenu
 bindsym Control+F10 exec scrot2xclipmenu
-bindsym F10 exec scrotmenu
+bindsym F10 exec scrotmenu &>> /tmp/scrotmenu-log
 
 # TODO: rofi clipboard manager
 #}}}
@@ -151,8 +151,8 @@ bindsym $mod+Shift+q kill
 #}}}
 
 #{{{Change window title
-bindsym $mod+Shift+t exec ~/dotfiles/i3/title_format.sh parent
-bindsym $mod+t exec ~/dotfiles/i3/title_format.sh
+bindsym $mod+Shift+t exec ~/dev/dotfiles/i3/title_format.sh parent
+bindsym $mod+t exec ~/dev/dotfiles/i3/title_format.sh
 #}}}
 
 #{{{Multimedia Keys
@@ -169,9 +169,10 @@ bindsym XF86MonBrightnessUp exec brillo -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec brillo -U 5 # decrease screen brightness
 #}}}
 
-#{{{Misc
+#{{{Misc: scrot, feh, xrandr
 bindsym Print exec scrot -e 'mv $f ~/Images/Screenshots/'
 bindsym $mod+Shift+w exec feh --bg-center ~/Images/Pessoas/RAW/1.jpg
+# bindsym $mod+Shift+w exec feh --bg-center ~/Images/VV/silence-breeds-results.jpeg
 # TODO: put in a udev rule? improve.
 bindsym $mod+Ctrl+x exec xrandr --auto
 bindsym $mod+Shift+x exec sh ~/.config/i3/toggleX.sh
@@ -183,7 +184,7 @@ bindsym $mod+Shift+x exec sh ~/.config/i3/toggleX.sh
 exec --no-startup-id feh --bg-center ~/Images/Pessoas/RAW/1.jpg
 exec --no-startup-id dunst -config ~/.config/i3/config_dunst
 # exec --no-startup-id conky --daemonize --pause=5
-exec --no-startup-id clight
+# exec --no-startup-id clight
 exec --no-startup-id arbtt-capture
 exec --no-startup-id i3-battery-popup -n -t 60
 exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -193,6 +194,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 for_window [title="Battery Warning"] sticky enable
 for_window [window_type="notification"] floating enable
 for_window [class="Spotify"] move to workspace $tag10
+for_window [class="^microsoft teams - preview$"] move to workspace $tag1
 assign [class="^TelegramDesktop$" instance="^telegram-desktop$"] → $tag1
 #}}}
 
