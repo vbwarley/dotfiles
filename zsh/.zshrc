@@ -12,8 +12,18 @@ export VISUAL="nvim"
 export EDITOR='nvim'
 # export PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/bin
 export FZF_DEFAULT_COMMAND="rg --files --hidden"
+
 export CUDA_DIR=/opt/cuda
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_DIR/lib/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_DIR/targets/x86_64-linux/lib/
+
+export CUDA10_DIR=/opt/cuda-10.2
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA10_DIR/lib/
+export CUDNN7_DIR=/opt/cudnn7-cuda10.2
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDNN7_DIR/lib/
+
+# TF
+export TF_CPP_MIN_LOG_LEVEL='3'
+
 export WORKON_HOME=$HOME/.virtualenvs
 export PATH=$PATH:~/.local/bin
 # source /usr/bin/virtualenvwrapper.sh
@@ -130,7 +140,9 @@ kitty + complete setup zsh | source /dev/stdin
 export PYTHONPATH=$PYTHONPATH:/home/lativ/dev/ipython
 
 # vision_utils
-export PYTHONPATH=$PYTHONPATH:/home/lativ/dev/vision
+# export PYTHONPATH=$PYTHONPATH:/home/lativ/dev/vision
+
+export PYTHONPATH=$PYTHONPATH:$HOME/dev/edge/toledo-truck-classification
 
 # vi 
 bindkey -v
