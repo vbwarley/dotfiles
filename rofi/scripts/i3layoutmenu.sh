@@ -8,7 +8,7 @@ option2="split"
 # options passed to variable
 options="$option0\n$option1\n$option2"
 
-selected="$(echo -e "$options" | rofi -lines 3 -dmenu -p "i3layout")"
+selected="$(echo -e "$options" | rofi -theme arc-red-dark -lines 3 -dmenu -p "i3layout")"
 case $selected in
     $option0)
         i3-msg layout stacked;;

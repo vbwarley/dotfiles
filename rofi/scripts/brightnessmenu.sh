@@ -10,7 +10,7 @@ option4="max"
 # options passed to variable
 options="$option0\n$option1\n$option2\n$option3\n$option4"
 
-selected="$(echo -e "$options" | rofi -lines 5 -dmenu -p "brightness")"
+selected="$(echo -e "$options" | rofi -theme arc-red-dark -lines 5 -dmenu -p "brightness")"
 case $selected in
     $option0)
 		sudo bash -c "echo 50 > /sys/class/backlight/intel_backlight/brightness";;
