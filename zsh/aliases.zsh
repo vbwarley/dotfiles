@@ -43,3 +43,7 @@ alias ls='ls --color=tty -B'
 alias k9='kill -9'
 alias 'vi=nvim'
 alias 'vim=nvim'
+alias 'fb=rg --files ~/Books/ | grep'
+alias checkcuda=/opt/cuda/samples/bin/x86_64/linux/release/deviceQuery
+alias momics='cd ~/dev/metabolomics/py/scripts'
+alias toledo='cd ~/dev/edge/toledo-truck-classification'

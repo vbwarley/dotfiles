@@ -18,7 +18,7 @@ option12="rotate monitor DP-1 normal"
 # Variable passed to rofi
 options="$option0\n$option1\n$option2\n$option3\n$option4\n$option5\n$option6\n$option7\n$option8\n$option9\n$option10\n$option11\n$option12"
 
-selected="$(echo -e "$options" | rofi -lines 13 -dmenu -p "xrandr")"
+selected="$(echo -e "$options" | rofi -theme arc-red-dark -lines 13 -dmenu -p "xrandr")"
 case $selected in
     $option0)
         xrandr --auto;;

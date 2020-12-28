@@ -135,6 +135,7 @@ nmap <F9> <Plug>(ale_fix)
 "}}}
 
 "{{{iron
+"luafile $HOME/.config/nvim/plugins.lua
 "let g:iron_repl_open_cmd='split'
 let g:iron_map_defaults = 0
 let g:iron_map_extended = 0
@@ -146,6 +147,10 @@ nmap <localleader><CR> <Plug>(iron-cr)
 nmap <localleader>i    <plug>(iron-interrupt)
 nmap <localleader>q    <Plug>(iron-exit)
 nmap <localleader>c    <Plug>(iron-clear)
+" nnoremap yr :IronRepl<CR>
+" nmap ,r <Plug>(iron-send-motion)
+" xmap ,r <Plug>(iron-send-motion)
+" nmap yR V,r
 "}}}
 
 "{{{ vimwiki
@@ -175,6 +180,12 @@ let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger  = "<c-p>"
 let g:UltiSnipsListSnippets         = "<c-k>"
 let g:UltiSnipsSnippetDirectories   = ['UltiSnips', $HOME.'/dev/vim-snippets']
+" https://github.com/neovim/neovim/issues/5702#issuecomment-264457101
+" https://github.com/SirVer/ultisnips/issues/593
+augroup ultisnips_no_auto_expansion
+    au!
+    au VimEnter * au! UltiSnips_AutoTrigger
+augroup END
 "}}} 
 
 "{{{auto save
@@ -182,6 +193,7 @@ let g:auto_save = 1
 "}}} 
 
 " vimtex {{{
+let g:tex_flavor = 'latex'
 packadd vimtex
 call deoplete#custom#var('omni', 'input_patterns', {
             \ 'tex': g:vimtex#re#deoplete
@@ -191,7 +203,6 @@ let g:vimtex_compiler_latexmk = {
     \}
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_view_method = 'zathura'
-let g:tex_flavor = 'latex'
 " }}}
 
 "{{{fzf
@@ -205,7 +216,7 @@ let g:fzf_action = {
 "{{{jupytext.vim
 " let g:jupytext_filetype_map = {'md': 'pandoc'}
 let g:jupytext_fmt = 'py'
-let g:jupytext_print_debug_msgs = 1
+" let g:jupytext_print_debug_msgs = 1
 "}}}
 
 " Set autocommands
@@ -237,7 +248,6 @@ augroup configgroup
         \ set shiftround      " round ident to multiple of 'shiftwidth'
         \ set autoindent      " copia a identação da linha anterior
         \ set fileformat=unix
-        \ luafile ~/.config/nvim/plugins.lua
     au BufNewFile,BufRead *.js;*.html;*.css;*.md;*.toml
         \ set tabstop=2
         \ set softtabstop=2
@@ -273,7 +283,7 @@ function! PackInit() abort
   call minpac#add('deoplete-plugins/deoplete-jedi')
   call minpac#add('Shougo/deoplete-clangx')
   " ---- ipython
-  call minpac#add('Vigemus/iron.nvim', {'type': 'start'})
+  call minpac#add('hkupty/iron.nvim', {'type': 'start', 'branch' : 'direct-invoke'})
   " call minpac#add('thinca/vim-quickrun')
   call minpac#add('powerman/vim-plugin-autosess')
   " --- revisions "
@@ -353,11 +363,8 @@ command! PackStatus call PackInit() | call minpac#status()
 """ Insert
 inoremap jk <Esc>
 
-""" Iron
-nnoremap yr :IronRepl<CR>
-nmap ,r <Plug>(iron-send-motion)
-xmap ,r <Plug>(iron-send-motion)
-nmap yR V,r
+"{{{Iron Plugin
+"}}}
 
 """" Normal
 nmap <F7> :tabp<CR>
