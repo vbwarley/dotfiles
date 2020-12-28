@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/lativ/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 export DOTFILES=~/dev/dotfiles
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
@@ -17,6 +17,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_DIR/lib/
 export WORKON_HOME=$HOME/.virtualenvs
 export PATH=$PATH:~/.local/bin
 # source /usr/bin/virtualenvwrapper.sh
+
 
 # Android SDK
 # export ANDROID_HOME=~/Android/Sdk
@@ -112,6 +113,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source $ZSH/custom/aliases.sh
 
 # Ruby path
 if which ruby >/dev/null && which gem >/dev/null; then
@@ -127,10 +129,10 @@ compinit
 kitty + complete setup zsh | source /dev/stdin
 
 # matplotlib-backend-kitty
-export PYTHONPATH=$PYTHONPATH:/home/lativ/dev/ipython
+export PYTHONPATH=$PYTHONPATH:$HOME/dev/ipython
 
 # vision_utils
-export PYTHONPATH=$PYTHONPATH:/home/lativ/dev/vision
+export PYTHONPATH=$PYTHONPATH:$HOME/dev/vision
 
 # vi 
 bindkey -v

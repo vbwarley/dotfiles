@@ -75,8 +75,8 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()"
 "}}}
 
 "{{{ Deoplete 
-let g:python_host_prog = '/home/lativ/.virtualenvs/neovim-py2/bin/python'
-let g:python3_host_prog = '/home/lativ/.virtualenvs/neovim/bin/python'
+let g:python_host_prog = '$HOME/.virtualenvs/neovim-py2/bin/python'
+let g:python3_host_prog = '$HOME/.virtualenvs/neovim/bin/python'
 let g:deoplete#enable_at_startup = 1
 "let g:deoplete#auto_complete_delay=100 " because semshi
 packadd deoplete.nvim
