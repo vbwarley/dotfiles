@@ -1,9 +1,8 @@
 " vim:foldmethod=marker:foldlevel=0
-" --------------- GENERAL CONFIG BEGIN 
+
+"{{{Misc
 set rtp ^=~/.vim
 let &packpath = &rtp
-
-
 syntax enable
 " To enable arbtt track what files I am working on.
 set title
@@ -14,7 +13,8 @@ set history=200
 set relativenumber
 set number
 
-let maplocalleader='\,'
+let maplocalleader=','
+"}}}
 
 " Backup {{{
 " move swp files 
@@ -44,9 +44,11 @@ set foldlevel=99
 
 "{{{Colorscheme
 set termguicolors
-colorscheme gruvbox
-"colorscheme minimalist
 hi Search cterm=None ctermfg=grey ctermbg=blue guifg=white guibg=blue
+"{{{ gruvbox
+colorscheme srcery
+let g:gruvbox_italic=1
+"}}}
 "}}}
 
 " Goyo {{{
@@ -112,6 +114,7 @@ let g:matchup_surround_enabled = 1
 
 "{{{ALE
 let g:ale_lint_on_enter = 0
+let g:ale_lint_text_changed = 'insert'
 let g:ale_python_pylint_options = '--rcfile ~/.pylintrc'
 let g:ale_linters = {'python': ['pylint']}
 let g:ale_fixers = {
@@ -119,6 +122,12 @@ let g:ale_fixers = {
 nmap <F9> <Plug>(ale_fix)
 " set redrawtime=10000 " or could CTRL-L few times"
 " let g:ale_fix_on_save = 1
+" Map movement through errors without wrapping.
+nmap <silent> <C-k> <Plug>(ale_previous)
+nmap <silent> <C-j> <Plug>(ale_next)
+" OR map keys to use wrapping.
+"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+"nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "}}}
 
 "{{{MISC
@@ -135,22 +144,23 @@ nmap <F9> <Plug>(ale_fix)
 "}}}
 
 "{{{iron
-"luafile $HOME/.config/nvim/plugins.lua
+packadd iron.nvim
+luafile $HOME/.config/nvim/plugins/iron.lua
 "let g:iron_repl_open_cmd='split'
 let g:iron_map_defaults = 0
 let g:iron_map_extended = 0
 nmap <localleader>t    <Plug>(iron-send-motion)
-vmap <localleader>v    <Plug>(iron-visual-send)
+vmap <localleader>v   <Plug>(iron-visual-send)
 nmap <localleader>r    <Plug>(iron-repeat-cmd)
-nmap <localleader>l    <Plug>(iron-send-line)
+nmap <localleader>l   <Plug>(iron-send-line)
 nmap <localleader><CR> <Plug>(iron-cr)
 nmap <localleader>i    <plug>(iron-interrupt)
 nmap <localleader>q    <Plug>(iron-exit)
 nmap <localleader>c    <Plug>(iron-clear)
-" nnoremap yr :IronRepl<CR>
-" nmap ,r <Plug>(iron-send-motion)
-" xmap ,r <Plug>(iron-send-motion)
-" nmap yR V,r
+"nnoremap yr :IronRepl<CR>
+"nmap ,r <Plug>(iron-send-motion)
+"xmap ,r <Plug>(iron-send-motion)
+"nmap yR V,r
 "}}}
 
 "{{{ vimwiki
@@ -162,9 +172,6 @@ let g:vimwiki_list = [{'path': '~/Wiki/',
 "let g:vimwiki_use_calendar = 1
 "}}}
 
-"{{{ gruvbox
-let g:gruvbox_italic=1
-"}}}
 
 "{{{ asciidoc-folding
 let g:asciidoc_fold_style = 'nested'
@@ -232,6 +239,7 @@ augroup configgroup
     au FileType vimwiki setlocal linebreak
     au FileType vimwiki nnoremap <Esc> :nohlsearch<CR>
     au FileType txt setlocal textwitdh=78
+    au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
     au TermOpen * set invnumber
     au TermClose * set number
     " au VimEnter * silent! !setxkbmap -option caps:ctrl_modifier
@@ -243,7 +251,7 @@ augroup configgroup
         \ set tabstop=4       " insere 4 espaços para um tab
         \ set softtabstop=4   " insere/deleta 4 espaços quando teclar TAB/BACKSPACE
         \ set shiftwidth=4    " seta para 4 o número de espaços inseridos para identação
-        \ set textwidth=79    " garante que nenhuma linha passe de 79 caracteres (editado para ficar de acordo com PEP 8)
+        \ set textwidth=88    " garante que nenhuma linha passe de 88 caracteres (editado para ficar de acordo com black e pylint)
         \ set expandtab       " insere caracteres de espaço sempre que a tecla <tab> é pressionada
         \ set shiftround      " round ident to multiple of 'shiftwidth'
         \ set autoindent      " copia a identação da linha anterior
@@ -276,15 +284,17 @@ function! PackInit() abort
   call minpac#add('junegunn/fzf.vim')
   " ---- closing
   call minpac#add('jiangmiao/auto-pairs')
-  call minpac#add('alvan/vim-closetag')
+  " call minpac#add('alvan/vim-closetag')
   " ---- auto-complete 
   call minpac#add('Shougo/deoplete.nvim', {'type': 'opt'})
   " --- deoplete-plugins
   call minpac#add('deoplete-plugins/deoplete-jedi')
   call minpac#add('Shougo/deoplete-clangx')
   " ---- ipython
-  call minpac#add('hkupty/iron.nvim', {'type': 'start', 'branch' : 'direct-invoke'})
+  call minpac#add('hkupty/iron.nvim', {'type': 'start'})
   " call minpac#add('thinca/vim-quickrun')
+  "call minpac#add('sillybun/vim-repl')
+  " ----
   call minpac#add('powerman/vim-plugin-autosess')
   " --- revisions "
   " call minpac#add('vim-scripts/savevers.vim')
@@ -343,6 +353,13 @@ function! PackInit() abort
   " call minpac#add('jalvesaq/Nvim-R')
   " ---
   call minpac#add('goerz/jupytext.vim')
+  "{{{colorscheme
+  call minpac#add('liuchengxu/space-vim-dark')
+  call minpac#add('srcery-colors/srcery-vim')
+  "}}}
+  call minpac#add('sk1418/HowMuch')
+  " ---
+  "
 endfunction
 
 command! PackUpdate call PackInit() | call minpac#update('', {'do': 'call minpac#status()'})
