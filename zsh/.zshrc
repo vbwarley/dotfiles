@@ -14,19 +14,33 @@ export EDITOR='nvim'
 export FZF_DEFAULT_COMMAND="rg --files --hidden"
 
 export CUDA_DIR=/opt/cuda
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_DIR/targets/x86_64-linux/lib/
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_DIR/targets/x86_64-linux/lib/
 
 export CUDA10_DIR=/opt/cuda-10.2
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA10_DIR/lib/
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA10_DIR/lib/
 export CUDNN7_DIR=/opt/cudnn7-cuda10.2
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDNN7_DIR/lib/
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDNN7_DIR/lib/
+#
+# https://prefetch.net/articles/linkers.badldlibrary.html
+# Use RUNPATH.
 
 # TF
 export TF_CPP_MIN_LOG_LEVEL='3'
 
 export WORKON_HOME=$HOME/.virtualenvs
 export PATH=$PATH:~/.local/bin
-# source /usr/bin/virtualenvwrapper.sh
+export PATH=$PATH:~/.dotnet/tools
+
+export LEDGER_FILE=~/finances/2021.journal
+
+# matplotlib-backend-kitty
+export PYTHONPATH=$PYTHONPATH:$HOME/dev/ipython
+# vision_utils
+# export PYTHONPATH=$PYTHONPATH:/home/lativ/dev/vision
+export PYTHONPATH=$PYTHONPATH:$HOME/dev/edge/toledo
+export DEV=~/dev
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 
 # Android SDK
@@ -138,12 +152,6 @@ autoload -Uz compinit
 compinit
 kitty + complete setup zsh | source /dev/stdin
 
-# matplotlib-backend-kitty
-export PYTHONPATH=$PYTHONPATH:$HOME/dev/ipython
-
-# vision_utils
-# export PYTHONPATH=$PYTHONPATH:/home/lativ/dev/vision
-export PYTHONPATH=$PYTHONPATH:$HOME/dev/edge/toledo-truck-classification
 
 # vi 
 bindkey -v
@@ -153,17 +161,24 @@ bindkey "^P" history-beginning-search-backward
 bindkey "^N" history-beginning-search-forward
 
 
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
+#         . "/opt/anaconda/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/opt/anaconda/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+
+source $ZSH/custom/functions.zsh
+
+[[ -s ~/.guild/zsh_completion ]] && . ~/.guild/zsh_completion  # Enable completion for guild
+source /usr/share/nvm/init-nvm.sh
