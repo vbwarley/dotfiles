@@ -22,13 +22,15 @@ set $tag10 10 ♪
 
 #}}}
 
-#{{{Font, etc.
+#{{{Font, modifier, workpace settings, etc.
 font pango:DejaVu Sans Mono for Powerline 8
 floating_modifier $mod
 
 hide_edge_borders   both
-workspace_auto_back_and_forth yes
 title_align center
+
+workspace_auto_back_and_forth yes
+workspace_layout tabbed
 #}}}
 
 #{{{Colors
@@ -152,8 +154,8 @@ bindsym $mod+Shift+q kill
 #}}}
 
 #{{{Change window title
-bindsym $mod+Shift+t exec ~/dev/dotfiles/i3/title_format.sh parent
-bindsym $mod+t exec ~/dev/dotfiles/i3/title_format.sh
+bindsym $mod+Shift+t exec ~/dev/dotfiles/i3/scripts/title_format.sh parent
+bindsym $mod+t exec ~/dev/dotfiles/i3/scripts/title_format.sh
 #}}}
 
 #{{{Multimedia Keys
@@ -172,20 +174,19 @@ bindsym XF86MonBrightnessDown exec brillo -U 5 # decrease screen brightness
 
 #{{{Misc: scrot, feh, xrandr
 bindsym Print exec scrot -e 'mv $f ~/Images/Screenshots/'
-bindsym $mod+Shift+w exec feh --bg-center ~/Images/Pessoas/RAW/1.jpg
+bindsym $mod+Shift+w exec feh --bg-center ~/Images/Wallpapers/metamorphosis2.png
 # bindsym $mod+Shift+w exec feh --bg-center ~/Images/VV/silence-breeds-results.jpeg
 # TODO: put in a udev rule? improve.
 bindsym $mod+Ctrl+x exec xrandr --auto
 bindsym $mod+Shift+x exec sh ~/.config/i3/scripts/toggleX.sh
-# exec xrandr --output $mon0 --auto --output $mon1 --mode 1920x1080 --left-of $mon0
-# exec sh ~/dotfiles/i3/toggleX.sh
+exec sh ~/.config/i3/scripts/toggleX.sh
 #}}}
 
 #{{{Startup programs
-exec --no-startup-id feh --bg-center ~/Images/Pessoas/RAW/1.jpg
+exec_always --no-startup-id feh --bg-center ~/Images/VV/dont-stop.png
 exec --no-startup-id dunst -config ~/.config/i3/config_dunst
 # exec --no-startup-id conky --daemonize --pause=5
-exec --no-startup-id clight
+exec_always --no-startup-id clight
 # exec --no-startup-id arbtt-capture
 exec --no-startup-id i3-battery-popup -n -t 60
 exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -213,10 +214,12 @@ bindsym $mod+x [urgent=latest] focus
 #{{{Launcher
 # Press $mod+o followed by either c, f, g, s, z, Escape or Return to launch one of ... 
 # or return to the default mode, respectively.
-set $mode_launcher Launch: [c]hromium [f]irefox [g]oogle-chrome [s]potify [z]athura
+set $mode_launcher Launch: [b]rave [r]oam [c]hromium [f]irefox [g]oogle-chrome [s]potify [z]athura
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
+    bindsym b exec brave
+    bindsym r exec roam-research
     bindsym c exec chromium
     bindsym f exec firefox
     bindsym g exec gchrome
@@ -260,7 +263,7 @@ bindsym $mod+r mode "resize"
 for_window [class=".*"] border pixel 1
 smart_borders no_gaps
 gaps outer 10
-gaps inner 5
+gaps inner 10
 
 # Example conf from github
 set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
