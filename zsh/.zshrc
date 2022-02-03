@@ -181,5 +181,4 @@ bindkey "^N" history-beginning-search-forward
 # source $ZSH/custom/functions.zsh
 
 [[ -s ~/.guild/zsh_completion ]] && . ~/.guild/zsh_completion  # Enable completion for guild
-# source /usr/share/nvm/init-nvm.sh
-source /usr/share/nvm/init-nvm.sh
+[[ -s /usr/share/nvm/init-nvm.sh ]] && source /usr/share/nvm/init-nvm.sh
