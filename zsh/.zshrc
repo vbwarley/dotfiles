@@ -137,7 +137,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source $ZSH/custom/aliases.sh
+source $ZSH/custom/aliases.zsh
 
 # Ruby path
 if which ruby >/dev/null && which gem >/dev/null; then
@@ -178,7 +178,8 @@ bindkey "^N" history-beginning-search-forward
 # <<< conda initialize <<<
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 
-source $ZSH/custom/functions.zsh
+# source $ZSH/custom/functions.zsh
 
 [[ -s ~/.guild/zsh_completion ]] && . ~/.guild/zsh_completion  # Enable completion for guild
+# source /usr/share/nvm/init-nvm.sh
 source /usr/share/nvm/init-nvm.sh
