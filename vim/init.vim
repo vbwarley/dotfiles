@@ -82,7 +82,7 @@ let g:python3_host_prog = '$HOME/.virtualenvs/neovim/bin/python'
 let g:deoplete#enable_at_startup = 1
 "let g:deoplete#auto_complete_delay=100 " because semshi
 packadd deoplete.nvim
-call deoplete#custom#option('auto_complete_delay', 100)
+call deoplete#custom#option('auto_complete_delay', 500)
 "}}}
 
 "{{{Airline
@@ -283,7 +283,8 @@ function! PackInit() abort
   call minpac#add('junegunn/fzf')
   call minpac#add('junegunn/fzf.vim')
   " ---- closing
-  call minpac#add('jiangmiao/auto-pairs')
+  call minpac#add('windwp/nvim-autopairs')
+  " call minpac#add('jiangmiao/auto-pairs')
   " call minpac#add('alvan/vim-closetag')
   " ---- auto-complete 
   call minpac#add('Shougo/deoplete.nvim', {'type': 'opt'})
