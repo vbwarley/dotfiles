@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
-mon0="eDP-1"
-mon1="HDMI-1"
+mon0="DP-2"
+mon1="HDMI-0"
 mode="1920x1080"
 img="~/Images/Pessoas/RAW/1.jpg"
 
@@ -9,6 +9,6 @@ xrandr --output $mon1 --off
 xrandr --auto
 
 # This is just setting up a second monitor
-xrandr --output $mon0 --output $mon1 --mode $mode --left-of $mon0
+xrandr --output $mon0 --output $mon1 --auto --right-of $mon0
 i3-msg restart
-feh --bg-center $img
+#feh --bg-center $img
