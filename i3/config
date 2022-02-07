@@ -5,8 +5,8 @@
 set $mod Mod4
 set $alt Mod1
 # TODO: get display names auto
-set $mon0 eDP-1
-set $mon1 HDMI-1
+set $mon1 DP-2
+set $mon0 HDMI-0
 
 # Name the workspaces
 set $tag1 1 @
@@ -23,7 +23,7 @@ set $tag10 10 ♪
 #}}}
 
 #{{{Font, modifier, workpace settings, etc.
-font pango:DejaVu Sans Mono for Powerline 8
+font pango:DejaVu Sans Mono for Powerline 6
 floating_modifier $mod
 
 hide_edge_borders   both
