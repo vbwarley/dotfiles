@@ -104,7 +104,9 @@ ZSH_THEME="lambda-gitster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  virtualenv
   virtualenvwrapper
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -138,6 +140,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source $ZSH/custom/aliases.zsh
+source $ZSH/custom/functions.zsh
 
 # Ruby path
 if which ruby >/dev/null && which gem >/dev/null; then
@@ -152,7 +155,6 @@ autoload -Uz compinit
 compinit
 kitty + complete setup zsh | source /dev/stdin
 
-
 # vi 
 bindkey -v
 
@@ -160,27 +162,11 @@ bindkey -v
 bindkey "^P" history-beginning-search-backward
 bindkey "^N" history-beginning-search-forward
 
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
-#         . "/opt/anaconda/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/opt/anaconda/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
-
-# source $ZSH/custom/functions.zsh
-
+# guildai
 [[ -s ~/.guild/zsh_completion ]] && . ~/.guild/zsh_completion  # Enable completion for guild
+# nvm
 [[ -s /usr/share/nvm/init-nvm.sh ]] && source /usr/share/nvm/init-nvm.sh
-
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+DATASETS_FOLDER=/home/warley/dev/datasets

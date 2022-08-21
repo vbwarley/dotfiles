@@ -219,7 +219,7 @@ label = Mem. %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlo1
+interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected> 
@@ -241,7 +241,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = eno1
+interface = enp2s0
 interval = 3.0
 
 format-connected-underline = #9f78e1
@@ -341,7 +341,7 @@ animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 2
+thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>

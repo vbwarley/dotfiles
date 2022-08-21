@@ -36,7 +36,8 @@ alias momics='cd ~/dev/metabolomics/py/scripts'
 alias toledo='cd ~/dev/edge/toledo-truck-classification'
 alias dev='cd ~/dev/'
 # https://www.reddit.com/r/commandline/comments/hp1ys0/fzf_to_show_only_directories_and_cd_when_i_choose/fxllp7z/?utm_source=reddit&utm_medium=web2x&context=3
-alias f='cd $(fd --exclude data --type directory | fzf)'
+# alias f='cd $(fd --exclude data --type directory | fzf)'
+alias f='cd $(fd --type directory | fzf)'
 
 # sysops
 alias ssh='kitty +kitten ssh'
