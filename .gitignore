@@ -1,2 +1,5 @@
 **/__pycache__
 *.pyc
+vim/backup
+vim/swap
+polybar/modules/polybar-scripts

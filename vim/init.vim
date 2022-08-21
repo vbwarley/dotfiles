@@ -1,9 +1,149 @@
 " vim:foldmethod=marker:foldlevel=0
+"
+"{{dein config
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=/home/warley/.vim/bundles/repos/github.com/Shougo/dein.vim
+
+" Required:
+call dein#begin('/home/warley/.vim/bundles')
+
+" Let dein manage dein
+" Required:
+call dein#add('/home/warley/.vim/bundles/repos/github.com/Shougo/dein.vim')
+
+" Add or remove your plugins here like this:
+"call dein#add('Shougo/neosnippet.vim')
+"call dein#add('Shougo/neosnippet-snippets')
+
+" Packages {{{
+  " ---
+" call dein#add('k-takata/minpac', {'type': 'opt'})
+call dein#add('tpope/vim-unimpaired')
+" ---
+call dein#add('github/copilot.vim')
+" call dein#add('tpope/vim-projectionist')
+" call dein#add('vim-syntastic/syntastic')
+" call dein#add('neomake/neomake')
+call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
+" --- fzf
+call dein#add('junegunn/fzf')
+call dein#add('junegunn/fzf.vim')
+" ---- closing
+call dein#add('windwp/nvim-autopairs')
+" call dein#add('jiangmiao/auto-pairs')
+" call dein#add('alvan/vim-closetag')
+" ---- auto-complete 
+" call dein#add('Shougo/deoplete.nvim')
+call dein#add('Shougo/ddc.vim')
+call dein#add('Shougo/ddc-nvim-lsp')
+call dein#add('Shougo/ddc-around')
+call dein#add('Shougo/ddc-matcher_head')
+call dein#add('Shougo/ddc-sorter_rank')
+call dein#add('Shougo/ddc-omni')
+call dein#add('Shougo/pum.vim')
+call dein#add('vim-denops/denops.vim')
+call dein#add('neovim/nvim-lspconfig')
+" --- deoplete-plugins
+" call dein#add('deoplete-plugins/deoplete-jedi')
+" call dein#add('Shougo/deoplete-clangx')
+" ---- ipython
+call dein#add('hkupty/iron.nvim')
+" call dein#add('thinca/vim-quickrun')
+"call dein#add('sillybun/vim-repl')
+" ----
+call dein#add('powerman/vim-plugin-autosess')
+" --- revisions "
+" call dein#add('vim-scripts/savevers.vim')
+"""" color scheme for vim """"
+" call dein#add('morhetz/gruvbox')
+call dein#add('gruvbox-community/gruvbox')
+
+call dein#add('dikiaap/minimalist')
+"""" semantic highlighting for python in neovim """"
+call dein#add('numirias/semshi')
+" ---- asciidoc
+" call dein#add('matcatc/vim-asciidoc-folding')
+" ---- js autocomplete
+" call dein#add('ternjs/tern_for_vim')
+" call dein#add('carlitux/deoplete-ternjs')
+call dein#add('w0rp/ale')
+" --- helpers
+call dein#add('Yggdroot/indentLine')
+" --- django
+" call dein#add('tweekmonster/django-plus.vim')
+" --- vim-ledger
+call dein#add('ledger/vim-ledger')
+" --- sudo in nvim
+call dein#add('lambdalisue/suda.vim')
+" --- writing
+call dein#add('junegunn/goyo.vim')
+call dein#add('lifepillar/vim-solarized8')
+" --- syntax highlighting
+call dein#add('mboughaba/i3config.vim')
+" --- dart-lang
+" call dein#add('dart-lang/dart-vim-plugin')
+" --- latex ac
+call dein#add('lervag/vimtex')
+" --- snippets
+call dein#add('SirVer/ultisnips')
+call dein#add('honza/vim-snippets')
+" --- auto save 
+call dein#add('907th/vim-auto-save')
+" --- track coding time in vim
+call dein#add('wakatime/vim-wakatime')
+" -- auto correct
+call dein#add('sedm0784/vim-you-autocorrect')
+" --- vim wiki
+" call dein#add('vimwiki/vimwiki')
+" call dein#add('itchyny/calendar.vim')
+call dein#add('vim-pandoc/vim-pandoc')
+call dein#add('vim-pandoc/vim-pandoc-syntax')
+call dein#add('Glench/Vim-Jinja2-Syntax')
+" ---
+call dein#add('davidhalter/jedi-vim')
+call dein#add('Vimjas/vim-python-pep8-indent')
+" --- html, js
+call dein#add('mattn/emmet-vim')
+" ---
+call dein#add('andymass/vim-matchup')
+call dein#add('tpope/vim-surround')
+" ---
+" call dein#add('jalvesaq/Nvim-R')
+" ---
+call dein#add('goerz/jupytext.vim')
+"{{{colorscheme
+call dein#add('liuchengxu/space-vim-theme')
+call dein#add('srcery-colors/srcery-vim')
+"}}}
+call dein#add('sk1418/HowMuch')
+" --- git
+call dein#add('airblade/vim-gitgutter')
+
+"}}}
+
+" Required:
+call dein#end()
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
 
 "{{{Misc
-set rtp ^=~/.vim
-let &packpath = &rtp
-syntax enable
+" set rtp ^=~/.vim/bundles
+" let &packpath = &rtp
+" syntax enable
 " To enable arbtt track what files I am working on.
 set title
 set clipboard+=unnamedplus
@@ -12,6 +152,8 @@ set iskeyword=@,48-57,_,192-255,-
 set history=200
 set relativenumber
 set number
+set updatetime=10
+set tags=~/dev/tags/
 
 let maplocalleader=','
 "}}}
@@ -43,12 +185,44 @@ set foldlevel=99
 "}}}
 
 "{{{Colorscheme
-set termguicolors
+set bg=dark
+" FROM morhetx/gruvbox wiki
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 hi Search cterm=None ctermfg=grey ctermbg=blue guifg=white guibg=blue
-"{{{ gruvbox
-colorscheme srcery
-let g:gruvbox_italic=1
 "}}}
+
+"{{{ gruvbox
+" colorscheme srcery
+hi StatusLine ctermfg=white
+let g:gruvbox_colors = {
+            \ 'bright_yellow':  '#000000',
+            \ 'bright_blue': '#ffffff',
+            \ 'faded_yellow':  '#000000',
+            \ 'faded_blue': '#ffffff',
+            \ 'yellow':  '#000000',
+            \ 'blue': '#ffffff'}
+let g:gruvbox_contrast_light='hard'
+let g:gruvbox_italic=1
+"colorscheme gruvbox
+"}}}
+
+"{{{space-vim-theme
+hi Comment cterm=italic
+colorscheme space_vim_theme
 "}}}
 
 " Goyo {{{
@@ -75,24 +249,72 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()"
 "}}}
-
-"{{{ Deoplete 
+"
+"{{{ Python host
 let g:python_host_prog = '$HOME/.virtualenvs/neovim-py2/bin/python'
 let g:python3_host_prog = '$HOME/.virtualenvs/neovim/bin/python'
-let g:deoplete#enable_at_startup = 1
-"let g:deoplete#auto_complete_delay=100 " because semshi
-packadd deoplete.nvim
-call deoplete#custom#option('auto_complete_delay', 500)
+"}}}
+
+"{{{ Deoplete 
+" let g:deoplete#enable_at_startup = 1
+" "let g:deoplete#auto_complete_delay=100 " because semshi
+" packadd deoplete.nvim
+" call deoplete#custom#option('auto_complete_delay', 100)
+"}}}
+
+"{{{ LSP
+lua require('lspconfig').pyright.setup{}
+"}}}
+
+"{{{ ddc
+call ddc#custom#patch_global('sources', ['nvim-lsp', 'omni', 'around'])
+call ddc#custom#patch_global('sourceOptions', {
+      \ '_': { 'matchers': ['matcher_head'], 'sorters': ['sorter_rank'] },
+      \ 'around': {'mark': 'A'},
+      \ 'nvim-lsp': {
+      \   'mark': 'lsp',
+      \   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
+      \ 'omni': {
+      \   'mark': 'O'},
+      \ })
+
+" Use Customized labels
+call ddc#custom#patch_global('sourceParams', { 
+            \ 'around': {'maxSize': 500}, 
+            \ 'nvim-lsp': { 'kindLabels': { 'Class': 'c' } }, 
+            \ })
+
+" <TAB>: completion.
+inoremap <silent><expr> <TAB>
+\ ddc#map#pum_visible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#map#manual_complete()
+
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+
+call ddc#enable()
+"}}}
+
+"{{{ pum
+inoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
+inoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
+inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
+inoremap <PageDown> <Cmd>call pum#map#insert_relative_page(+1)<CR>
+inoremap <PageUp>   <Cmd>call pum#map#insert_relative_page(-1)<CR>
 "}}}
 
 "{{{Airline
 let g:airline_powerline_fonts=1
-let g:airline_theme='simple'
+"let g:airline_theme='simple'
+let g:airline_theme='dark'
 "}}}
 
 "{{{ jedi-vim
 let g:jedi#completions_enabled = 0
 set noshowmode
+let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = 2
 "let g:jedi#auto_initialization = 0
 "}}}
@@ -103,7 +325,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] " Hide .pyc files in NERDTree
 
 "{{{netrw
 let g:netrw_banner=0
-let g:netrw_browse_split=2
+let g:netrw_browse_split=0
 let g:netrw_winsize=25
 let g:netrw_liststyle=3
 "}}} 
@@ -113,12 +335,13 @@ let g:matchup_surround_enabled = 1
 "}}}
 
 "{{{ALE
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter = 1
 let g:ale_lint_text_changed = 'insert'
-let g:ale_python_pylint_options = '--rcfile ~/.pylintrc'
+" let g:ale_python_pylint_options = '--rcfile ~/.pylintrc'
 let g:ale_linters = {'python': ['pylint']}
 let g:ale_fixers = {
             \ 'python' : ['black'],}
+let g:ale_python_black_options = '--line-length 88 --experimental-string-processing'
 nmap <F9> <Plug>(ale_fix)
 " set redrawtime=10000 " or could CTRL-L few times"
 " let g:ale_fix_on_save = 1
@@ -144,23 +367,13 @@ nmap <silent> <C-j> <Plug>(ale_next)
 "}}}
 
 "{{{iron
-packadd iron.nvim
+" packadd iron.nvim
+" mappings for iron are here
 luafile $HOME/.config/nvim/plugins/iron.lua
 "let g:iron_repl_open_cmd='split'
+" should I remove these globals?
 let g:iron_map_defaults = 0
 let g:iron_map_extended = 0
-nmap <localleader>t    <Plug>(iron-send-motion)
-vmap <localleader>v   <Plug>(iron-visual-send)
-nmap <localleader>r    <Plug>(iron-repeat-cmd)
-nmap <localleader>l   <Plug>(iron-send-line)
-nmap <localleader><CR> <Plug>(iron-cr)
-nmap <localleader>i    <plug>(iron-interrupt)
-nmap <localleader>q    <Plug>(iron-exit)
-nmap <localleader>c    <Plug>(iron-clear)
-"nnoremap yr :IronRepl<CR>
-"nmap ,r <Plug>(iron-send-motion)
-"xmap ,r <Plug>(iron-send-motion)
-"nmap yR V,r
 "}}}
 
 "{{{ vimwiki
@@ -201,10 +414,19 @@ let g:auto_save = 1
 
 " vimtex {{{
 let g:tex_flavor = 'latex'
-packadd vimtex
-call deoplete#custom#var('omni', 'input_patterns', {
-            \ 'tex': g:vimtex#re#deoplete
-            \})
+" packadd vimtex
+" call deoplete#custom#var('omni', 'input_patterns', {
+"             \ 'tex': g:vimtex#re#deoplete
+"             \})
+call vimtex#init()
+call ddc#custom#patch_filetype(['tex'], 'sourceOptions', {
+      \ 'omni': {
+      \   'forceCompletionPattern': g:vimtex#re#deoplete
+      \ },
+      \ })
+call ddc#custom#patch_filetype(['tex'], 'sourceParams', {
+      \ 'omni': {'omnifunc': 'vimtex#complete#omnifunc'},
+      \ })
 let g:vimtex_compiler_latexmk = {
     \ 'build_dir': './build',
     \}
@@ -225,9 +447,14 @@ let g:fzf_action = {
 let g:jupytext_fmt = 'py'
 " let g:jupytext_print_debug_msgs = 1
 "}}}
+"
+
+"{{{vim-gitgutter
+"highlight link GitGutterChangeLineNr Underlined
+"}}}
+
 
 " Set autocommands
-
 "{{{AUGROUP
 augroup configgroup
     autocmd! 
@@ -247,7 +474,7 @@ augroup configgroup
     "au BufEnter * EnableAutocorrect
     au BufEnter * if &buftype == 'terminal' | :startinsert | endif
     au BufNewFile,BufRead ~/.config/i3/config set filetype=i3config
-    au BufNewFile,BufRead *.py
+    au FileType python 
         \ set tabstop=4       " insere 4 espaços para um tab
         \ set softtabstop=4   " insere/deleta 4 espaços quando teclar TAB/BACKSPACE
         \ set shiftwidth=4    " seta para 4 o número de espaços inseridos para identação
@@ -256,7 +483,7 @@ augroup configgroup
         \ set shiftround      " round ident to multiple of 'shiftwidth'
         \ set autoindent      " copia a identação da linha anterior
         \ set fileformat=unix
-    au BufNewFile,BufRead *.js;*.html;*.css;*.md;*.toml
+    au FileType *.js;*.html;*.css;*.md;*.toml
         \ set tabstop=2
         \ set softtabstop=2
         \ set shiftwidth=2
@@ -264,109 +491,22 @@ augroup configgroup
 
 augroup END
 "}}}
+"
 
-" Packages
+"{{{General autocmds
+" cursor line only in normal mode
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
+" gray status line always
+autocmd ColorScheme * highlight StatusLine ctermbg=darkgray cterm=NONE guibg=darkgray gui=NONE
+" Restore cursor position when opening file
+autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   execute "normal! g`\"" |
+    \ endif
 
-" minpac {{{
-function! PackInit() abort
-  packadd minpac
-  call minpac#init()
-  " ---
-  call minpac#add('k-takata/minpac', {'type': 'opt'})
-  call minpac#add('tpope/vim-unimpaired')
-  " call minpac#add('tpope/vim-projectionist')
-  " call minpac#add('vim-syntastic/syntastic')
-  " call minpac#add('neomake/neomake')
-  call minpac#add('vim-airline/vim-airline')
-  call minpac#add('vim-airline/vim-airline-themes')
-  " --- fzf
-  call minpac#add('junegunn/fzf')
-  call minpac#add('junegunn/fzf.vim')
-  " ---- closing
-  call minpac#add('windwp/nvim-autopairs')
-  " call minpac#add('jiangmiao/auto-pairs')
-  " call minpac#add('alvan/vim-closetag')
-  " ---- auto-complete 
-  call minpac#add('Shougo/deoplete.nvim', {'type': 'opt'})
-  " --- deoplete-plugins
-  call minpac#add('deoplete-plugins/deoplete-jedi')
-  call minpac#add('Shougo/deoplete-clangx')
-  " ---- ipython
-  call minpac#add('hkupty/iron.nvim', {'type': 'start'})
-  " call minpac#add('thinca/vim-quickrun')
-  "call minpac#add('sillybun/vim-repl')
-  " ----
-  call minpac#add('powerman/vim-plugin-autosess')
-  " --- revisions "
-  " call minpac#add('vim-scripts/savevers.vim')
-  """" color scheme for vim """"
-  call minpac#add('morhetz/gruvbox')
-  call minpac#add('dikiaap/minimalist')
-  """" semantic highlighting for python in neovim """"
-  call minpac#add('numirias/semshi')
-  " ---- asciidoc
-  " call minpac#add('matcatc/vim-asciidoc-folding')
-  " ---- js autocomplete
-  " call minpac#add('ternjs/tern_for_vim')
-  " call minpac#add('carlitux/deoplete-ternjs')
-  call minpac#add('w0rp/ale')
-  " --- helpers
-  call minpac#add('Yggdroot/indentLine')
-  " --- django
-  " call minpac#add('tweekmonster/django-plus.vim')
-  " --- vim-ledger
-  call minpac#add('ledger/vim-ledger')
-  " --- sudo in nvim
-  call minpac#add('lambdalisue/suda.vim')
-  " --- writing
-  call minpac#add('junegunn/goyo.vim')
-  call minpac#add('lifepillar/vim-solarized8')
-  " --- i3config
-  call minpac#add('mboughaba/i3config.vim')
-  " --- dart-lang
-  " call minpac#add('dart-lang/dart-vim-plugin')
-  " --- latex ac
-  call minpac#add('lervag/vimtex', {'type': 'opt'})
-  " --- snippets
-  call minpac#add('SirVer/ultisnips')
-  call minpac#add('honza/vim-snippets')
-  " --- auto save 
-  call minpac#add('907th/vim-auto-save')
-  " --- track coding time in vim
-  call minpac#add('wakatime/vim-wakatime')
-  " -- auto correct
-  call minpac#add('sedm0784/vim-you-autocorrect')
-  " --- vim wiki
-  " call minpac#add('vimwiki/vimwiki')
-  " call minpac#add('itchyny/calendar.vim')
-  call minpac#add('vim-pandoc/vim-pandoc')
-  call minpac#add('vim-pandoc/vim-pandoc-syntax')
-  call minpac#add('Glench/Vim-Jinja2-Syntax')
-  " ---
-  call minpac#add('davidhalter/jedi-vim')
-  call minpac#add('Vimjas/vim-python-pep8-indent')
-  " --- html, js
-  call minpac#add('mattn/emmet-vim')
-  " ---
-  call minpac#add('andymass/vim-matchup')
-  call minpac#add('tpope/vim-surround')
-  " ---
-  " call minpac#add('jalvesaq/Nvim-R')
-  " ---
-  call minpac#add('goerz/jupytext.vim')
-  "{{{colorscheme
-  call minpac#add('liuchengxu/space-vim-dark')
-  call minpac#add('srcery-colors/srcery-vim')
-  "}}}
-  call minpac#add('sk1418/HowMuch')
-  " ---
-  "
-endfunction
-
-command! PackUpdate call PackInit() | call minpac#update('', {'do': 'call minpac#status()'})
-command! PackClean  call PackInit() | call minpac#clean()
-command! PackStatus call PackInit() | call minpac#status()
 "}}}
+
 
 " Mappings
 
@@ -385,8 +525,8 @@ inoremap jk <Esc>
 "}}}
 
 """" Normal
-nmap <F7> :tabp<CR>
-nmap <F8> :tabn<CR>
+" nmap <F7> :tabp<CR>
+" nmap <F8> :tabn<CR>
 nmap <C-N><C-N> :set invnumber<CR> 
 nnoremap <CR> :nohlsearch<CR><CR>
 nnoremap <space> za
@@ -445,6 +585,22 @@ nnoremap <A-0> 10gt
 """" deoplete selection binding
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"{{{General remappings
+" Saner CTRL-L -- https://github.com/mhinz/vim-galore#saner-ctrl-l
+nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+" Saner command-line history -- zsh-like for me
+cnoremap <expr> <c-n> wildmenumode() ? "\<c-n>" : "\<down>"
+cnoremap <expr> <c-p> wildmenumode() ? "\<c-p>" : "\<up>"
+" Saner behavior of n and N -- n forward, N backward
+nnoremap <expr> n  'Nn'[v:searchforward]
+xnoremap <expr> n  'Nn'[v:searchforward]
+onoremap <expr> n  'Nn'[v:searchforward]
+
+nnoremap <expr> N  'nN'[v:searchforward]
+xnoremap <expr> N  'nN'[v:searchforward]
+onoremap <expr> N  'nN'[v:searchforward]
+"}}}
 
 " ---- ** PLUGINS MAPPINGS BEGIN
 "source $VIMCONFIG/plugins-mappings/fzf.vim
