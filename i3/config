@@ -138,6 +138,9 @@ bindsym Control+$mod+s exec systemctl suspend
 bindsym $mod+Return exec kitty
 bindsym --release $mod+d exec --no-startup-id "rofi -combi-modi window,drun -show combi -modi combi,drun -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
 
+# autostart scripts
+exec --no-startup-id bash ~/.config/i3/scripts/autostart.sh
+
 # rofi-menus
 bindsym $mod+Shift+p exec sh ~/.config/rofi/scripts/powermenu.sh
 bindsym F7 exec xrandrmenu
