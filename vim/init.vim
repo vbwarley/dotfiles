@@ -359,6 +359,8 @@ function! PackInit() abort
   call minpac#add('srcery-colors/srcery-vim')
   "}}}
   call minpac#add('sk1418/HowMuch')
+  "
+  call minpac#add('numirias/semshi')
   " ---
   "
 endfunction

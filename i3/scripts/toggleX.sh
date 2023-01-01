@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
-mon0="DP-2"
-mon1="HDMI-0"
+mon0="eDP-1"
+mon1="HDMI-1"
 mode="1920x1080"
 img="~/Images/Pessoas/RAW/1.jpg"
 
